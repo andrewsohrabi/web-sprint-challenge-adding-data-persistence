@@ -1,6 +1,7 @@
-const checkTaskBody = (req, res, next) => {
+const validateTaskBody = (req, res, next) => {
     const { task_description, project_id } = req.body;
   
+    // question: how does constructor and object key validation work?
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
       res.status(400).json({ message: "task_description and project_id are required" });
     } else if (!task_description || !project_id) {
@@ -10,4 +11,4 @@ const checkTaskBody = (req, res, next) => {
     }
   }
   
-  module.exports = {checkTaskBody};
+  module.exports = {validateTaskBody};

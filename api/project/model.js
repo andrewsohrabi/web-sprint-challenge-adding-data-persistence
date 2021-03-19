@@ -4,6 +4,7 @@ const db = require('../../data/dbConfig');
 const getAll = async () => {
   const projects = await db('projects');
 
+  // map over projects and update the completed attribute to T/F based on initial
   return projects.map(project => {
     return {
       ...project,
@@ -17,6 +18,7 @@ const create = async (project) => {
   const [id] = await db('projects').insert(project, ['project_id']);
 // get new project with deconstructed id
   const newProject = await getById(id);
+  // similiar to above with the mapping
   return {
     ...newProject,
     project_completed: newProject.project_completed ? true : false
