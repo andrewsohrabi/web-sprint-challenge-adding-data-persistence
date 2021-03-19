@@ -1,4 +1,4 @@
-const checkProjectBody = (req, res, next) => {
+const validateProjectBody = (req, res, next) => {
     const { project_name } = req.body;
   
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
@@ -10,4 +10,4 @@ const checkProjectBody = (req, res, next) => {
     }
   }
   
-  module.exports = {checkProjectBody};
+  module.exports = {validateProjectBody};
